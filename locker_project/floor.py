@@ -1,5 +1,4 @@
 def check_locker_value(x):
-    locker = {}
     count_floor = 1
     flag_nine = True
     flag_three = False
@@ -9,8 +8,9 @@ def check_locker_value(x):
     if x.isdigit():
       for i in range(1,int(x)+1):
         temp.append(i)
-        locker[count_floor] = temp
-        if flag_nine and len(temp)==9:
+        if int(x) == i:
+          return 'Locker is found. Please go to floor ' + str(count_floor)
+        elif flag_nine and len(temp)==9:
           count_floor+=1
           flag_nine = False
           flag_three = True
@@ -30,9 +30,6 @@ def check_locker_value(x):
           flag_two = False
           flag_nine = True
           temp = []
-      for i in locker:
-          if int(x) in locker[i]:
-              return 'Locker is found. Please go to floor ' + str(i)
       return 'Locker is not found. Try other locker'
     else:
         return 'Please input a digit'
